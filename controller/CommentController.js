@@ -35,11 +35,10 @@ exports.postComment = (req, res, next) => {
 
 
 exports.updateComment = (req, res, next) => {
-    const postId = req.params.id
-    const user_id = req.body.user_id
+    const id = req.params.id
     const newComment = req.body.comment
 
-    db.query('update comment set content = ? where id_post = ? and id_user = ?', [newComment, postId, user_id])
+    db.query('update comment set content = ? where id = ?', [newComment, id])
         .then(() => {
             res.json({
                 success: true,
@@ -50,3 +49,5 @@ exports.updateComment = (req, res, next) => {
             next(err)
         })
 }
+
+exports.deleteComment
