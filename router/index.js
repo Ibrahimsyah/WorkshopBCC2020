@@ -1,6 +1,8 @@
 const router = require('express').Router()
 const userRouter = require('./UserRouter')
 const likeRouter = require('./LikeRouter')
+const postRouter = require('./PostRouter');
+const commentRouter = require('./CommentRouter');
 
 router.get('/', (req, res) => {
     res.send('BCC In Glory')
@@ -8,6 +10,8 @@ router.get('/', (req, res) => {
 
 router.use('/user', userRouter)
 router.use('/like', likeRouter)
+router.use('/post', postRouter)
+router.use('/comment', commentRouter)
 router.use(notFound)
 router.use(errorHandler)
 
