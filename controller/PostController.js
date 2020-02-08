@@ -13,3 +13,17 @@ exports.createPost = (req, res, next) => {
             next(err)
         })
 }
+
+
+exports.getPostById = async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const [posts] = await db.query('select * from post where id = ?', [id])
+        res.json({
+            success: true,
+            data: posts
+        })
+    } catch (err) {
+        next(err)
+    }
+}
