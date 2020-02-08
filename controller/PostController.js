@@ -28,3 +28,20 @@ exports.getPostById = async (req, res, next) => {
         next(err)
     }
 }
+
+
+exports.updatePost = (req, res, next) => {
+    const id = req.params.id
+    const newContent = req.body.content
+
+    db.query('update post set content = ? where id = ?', [newContent, id])
+        .then(() => {
+            res.json({
+                success: true,
+                message: "Post updated"
+            })
+        })
+        .catch((err) => {
+            next(err)
+        })
+}
