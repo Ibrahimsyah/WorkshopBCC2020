@@ -20,4 +20,17 @@ create table `post`(
     content text,
     createdAt timestamp default CURRENT_TIMESTAMP,
     updatedAt timestamp default CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP
-)
+);
+
+create table `like`(
+    id_post integer references post(id),
+    id_user integer references user(id),
+    primary key(id_post, id_user)
+);
+
+create table `comment`(
+    id integer primary key auto_increment,
+    id_post integer references post(id),
+    id_user integer references user(id),
+    content text
+);
