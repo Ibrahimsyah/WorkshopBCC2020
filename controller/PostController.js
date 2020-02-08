@@ -45,3 +45,17 @@ exports.updatePost = (req, res, next) => {
             next(err)
         })
 }
+
+exports.deletePost = (req, res, next) => {
+    const id = req.params.id;
+    db.query('delete from post where id = ?', [id])
+        .then(() => {
+            res.json({
+                success: true,
+                message: "post was delete"
+            })
+        })
+        .catch((err) => {
+            next(err)
+        })
+}
