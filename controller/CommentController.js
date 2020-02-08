@@ -50,4 +50,17 @@ exports.updateComment = (req, res, next) => {
         })
 }
 
-exports.deleteComment
+exports.deleteComment = (req, res, next) => {
+    const id = req.params.id
+
+    db.query('delete from comment where id = ?', [id])
+        .then(() => {
+            res.json({
+                success: true,
+                message: "comment deleted"
+            })
+        })
+        .catch((err) => {
+            next(err)
+        })
+}
