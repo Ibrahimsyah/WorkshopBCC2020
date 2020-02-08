@@ -4,8 +4,12 @@
   "main": "index.js",
   "author": "bcc",
   "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.2"
   }
 }
