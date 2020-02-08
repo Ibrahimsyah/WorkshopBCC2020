@@ -2,7 +2,8 @@ const db = require('../database');
 
 exports.createPost = (req, res, next) => {
     const content = req.body.content
-    db.query('insert into post values (?)', [content])
+    const userId = req.body.id_user
+    db.query('insert into post(content, id_user) values (?,?)', [content, userId])
         .then(() => {
             res.json({
                 "success": true,
