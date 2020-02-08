@@ -1,46 +1,20 @@
 const router = require('express').Router()
+const userController = require('../controller/UserController')
 
-const user = ["User1", "User2", "User3"]
+//info: menghandle semua request dari /user
+//get semua user
+router.get('/', userController.getAllUser)
 
-router.get('/', (req, res) => {
-    if (user.length > 0) {
-        res.status(200)
-        res.json({
-            "success": true,
-            "users": user
-        })
-    }else{
-        res.status(404)
-        res.json({
-            "success" : false,
-            "message" : "user not found"
-        })
-    }
-})
+//get salah satu user
+router.get('/:id', userController.getUserById)
 
-router.get('/:id', (req, res)=>{
-    const index = req.params.id
-    res.json({
-        "success" : true,
-        "user" : user[index]
-    }).status(200)
-})
+//daftar user
+router.post('/', userController.registerUser)
 
-router.post('/', (req, res)=>{
-    const userBaru = req.body.user
-    user.push(userBaru)
-    res.json({
-        "success" : true,
-    })
-})
+//update nama user
+router.put('/:id', userController.updateUserName)
 
-router.put('/:id', (req, res)=>{
-    const index = req.params.id
-    const dataBaru = req.body.user
-    user[index] = dataBaru
-    res.json({
-        "success" : true,
-    })
-})
+//delete user
+router.delete('/:id', userController.deleteUser)
 
 module.exports = router
