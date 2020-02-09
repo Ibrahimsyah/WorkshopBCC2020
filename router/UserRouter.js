@@ -9,7 +9,10 @@ router.get('/', userController.getAllUser)
 router.get('/:id', userController.getUserById)
 
 //daftar user
-router.post('/', userController.registerUser)
+router.post('/register', userController.registerUser)
+
+//login user
+router.post('/login', userController.loginUser)
 
 //update nama user
 router.put('/:id', userController.updateUserName)
