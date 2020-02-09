@@ -1,10 +1,11 @@
 const router = require('express').Router()
 const commentController = require('../controller/CommentController')
+const { checkToken } = require('../middleware/')
 
 // GET /: id    get comment for a post by id_post
 router.get('/:id_post', commentController.getCommentForPost)
 
-router.post('/:id_post', commentController.postCommentOnPost)
+router.post('/:id_post', checkToken, commentController.postCommentOnPost)
 // PUT /: id    update comment by id
 router.put('/:id_comment', commentController.updateComment)
 // DELETE /: id delete comment by id

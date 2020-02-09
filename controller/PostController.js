@@ -17,7 +17,7 @@ module.exports = {
         }
     },
     postPost: (req, res, next) => {
-        const id_user = req.body.id_user
+        const id_user = req.user.id_user
         const content = req.body.content
         db.query('insert into posts(id_user, content) values(?,?)',
             [id_user, content])
