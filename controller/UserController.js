@@ -2,7 +2,7 @@ const db = require('../database')
 
 const getAllUser = async (req, res, next) => {
     try {
-        const [rows] = await db.query('select * from user')
+        const [rows] = await db.query('select * from users')
         res.json({
             "success": true,
             "data": rows
@@ -14,7 +14,7 @@ const getAllUser = async (req, res, next) => {
 
 const registerUser = (req, res, next) => {
     const name = req.body.name
-    db.query('insert into user(name) values(?)', [name])
+    db.query('insert into users(name) values(?)', [name])
         .then(() => {
             res.json({
                 "success": true,
@@ -45,7 +45,7 @@ const getUserById = async (req, res, next) => {
 const updateUserName = (req, res, next) => {
     const id = req.params.id
     const newName = req.body.name
-    db.query('update user set name = ? where id = ?', [newName, id])
+    db.query('update users set name = ? where id = ?', [newName, id])
         .then(() => {
             res.json({
                 "success": true,
@@ -61,7 +61,7 @@ const updateUserName = (req, res, next) => {
 
 const deleteUser = (req, res, next) => {
     const id = req.params.id
-    db.query('delete from user where id = ?', [id])
+    db.query('delete from users where id = ?', [id])
         .then(() => {
             res.json({
                 "success": true,

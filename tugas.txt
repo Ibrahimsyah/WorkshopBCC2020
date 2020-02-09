@@ -16,14 +16,15 @@ Like
     endpoint: /like
         GET /   get all Like
         POST /  like a post 
-        DELETE / dislike a post
+        DELETE /:id dislike a post
 
 Comment
 - id: Int       primary key
 - id_user: Int  references user(id)
 - id_post: Int  references post(id)
 - content: String
-    endpoint: /content 
+    endpoint: /comment  
         GET /:id    get comment for a post by id_post
+        POST /:id   post a comment for a post on id_post
         PUT /:id    update comment by id
         DELETE /:id delete comment by id
