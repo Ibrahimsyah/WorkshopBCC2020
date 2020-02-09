@@ -53,12 +53,21 @@ module.exports = {
     },
     deletePostById: (req, res, next) => {
         const id_post = req.params.id_post
-        db.query('delete from posts where id = ?', [id_post])
-            .then(() => {
-                res.json({
-                    "success": true,
-                    "message": "post deleted"
-                })
+        const id_user = req.user.id_user
+        db.query('delete from posts where id = ? and id_user = ?', [id_post, id_user])
+            .then((results) => {
+                if(results.affectedRows == 0){
+                    res.status(404)
+                    res.json({
+                        "success" : false,
+                        "message" : "Post Not Found"
+                    })
+                }else{
+                    res.json({
+                        "success" : true,
+                        "message" : "Post Deleted"
+                    })
+                }
             })
             .catch((err) => {
                 res.json({

@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     res.send('BCC In Glory')
 })
 
+
 router.use('/user', userRouter)
 router.use('/post', postRouter)
 router.use('/like', likeRouter)

@@ -22,3 +22,10 @@ create table `comment`(
     id_post integer references post(id),
     content text
 )
+
+insert into likes values
+    (1, 2),
+    (1, 5),
+    (1, 4),
+    (1, 19),
+    (1, 10)
