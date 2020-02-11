@@ -29,62 +29,62 @@ const registerUser = async (req, res, next) => {
             const hashedPassword = await bcrypt.hash(password, 11)
             db.query('insert into users(name, email, password) values(?,?,?)',
                 [name, email, hashedPassword])
-                .then(()=>{
+                .then(() => {
                     res.json({
-                        "success" :true,
-                        "message" : "Register success!"
+                        "success": true,
+                        "message": "Register success!"
                     })
                 })
-                .catch((err)=>{
+                .catch((err) => {
                     res.status(500)
                     res.json({
-                        "success" : false,
-                        "error" : err
+                        "success": false,
+                        "error": err
                     })
                 })
-    }
+        }
         else {
             res.status(409)
             const error = new Error("Email already registered")
             next(error)
         }
-    }else{
+    } else {
         res.status(409)
-            const error = new Error("Your email is incorrect")
-            next(error)
+        const error = new Error("Your email is incorrect")
+        next(error)
     }
 
 }
 
-const loginUser = async (req, res, next) =>{
+const loginUser = async (req, res, next) => {
     const email = req.body.email
     const [rows] = await db.query('select * from users where email = ?',
-    [email])
-    if(rows.length != 0){
+        [email])
+    if (rows.length != 0) {
         const user = rows[0]
         const password = req.body.password
-        bcrypt.compare(password, user.password)
-        .then(async()=>{
+        const isVerified = await bcrypt.compare(password, user.password)
+        if (isVerified) {
             const payload = {
-                "id_user" : user.id,
-                "email" : user.email
+                "id_user": user.id,
+                "email": user.email
             }
             const token = await jwt.sign(payload, JWT_KEY)
-            if(token){
+            if (token) {
                 res.json({
-                    "success" : true,
-                    "token" : token
+                    "success": true,
+                    "token": token
                 })
-            }else{
+            } else {
                 const error = new Error("JWT Error, cant create token")
                 next(error)
             }
-        })
-        .catch(()=>{
+        }
+        else {
             const error = new Error("Wrong password")
             next(error)
-        })
-    }else{
+        }
+    } else {
         const error = new Error("U seems not registered yet")
         next(error)
     }
