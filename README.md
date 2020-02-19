@@ -34,7 +34,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
 
     {
         “name”      : “Muhammad NuFadhil Eka”,
-        “email”     “hellow123@skiewskiw.com”,
+        “email”     : “hellow123@skiewskiw.com”,
         “password”  : “Papafadli99”
     }
 
