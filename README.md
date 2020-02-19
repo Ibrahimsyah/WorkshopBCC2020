@@ -61,10 +61,10 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
 ### Login User (POST /user/login)
 ***Request (Body): JSON***
             
-{
-    “email”     : “hellow123@skiewskiw.com”
-    "password”  : “qweasd123”
-}
+    {
+        “email”     : “hellow123@skiewskiw.com”
+        "password”  : “qweasd123”
+    }
 
 ***Response: JSON***
     
