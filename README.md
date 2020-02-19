@@ -29,7 +29,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
 # ENDPOINT
 ## User (/user)
 
-### Register User (POST /user/register)
+### Register User (POST /register)
 ***Request (body): JSON***
 
     {
@@ -58,7 +58,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
             “message”   : “internaserver error”
         }
 
-### Login User (POST /user/login)
+### Login User (POST /login)
 ***Request (Body): JSON***
             
     {
@@ -91,7 +91,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
             “success” : false,
             “message” : “internal server error”
     }
-### Get All Users (GET /user)
+### Get All Users (GET /)
 ***Response: JSON***
 
     200:         
@@ -124,7 +124,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Get User by id (GET /user/:id)
+### Get User by id (GET /:id)
 ***Request (params): id***
 
 ***Response : JSON***
@@ -187,7 +187,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Get All Post (GET /post)
+### Get All Post (GET /)
 ***Response: JSON***
     
     200 :   
@@ -221,7 +221,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Get Specific post (GET /post/:id)
+### Get Specific post (GET /:id)
 ***Request (params): (Required) id => id_post ***
 
 ***Response: JSON***
@@ -260,7 +260,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
 
 
 
-### Update Post (PUT        /post/:id)
+### Update Post (PUT /:id)
 ***Request (params): (Required) id => id_post***
 
 ***Request (header): (required) Authorization: Bearer <JWT_TOKEN>***
@@ -293,7 +293,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Delete post (DELETE     /post/:id)
+### Delete post (DELETE /:id)
 
 ***Request (params): (Required) id => id_post***
 
@@ -325,7 +325,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
 
 ## LIKE
 
-### Get all like (GET        /like)
+### Get all like (GET /)
 ***Response: JSON***
 
     200:
@@ -349,7 +349,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Like a post (POST        /like/:id)
+### Like a post (POST /:id)
 ***Request (params) : (required) id => id_post***
 
 ***Request (header): (required) Authorization: Bearer <JWT_TOKEN>***
@@ -382,7 +382,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Dislike a post (DELETE    /like/:id)
+### Dislike a post (DELETE /:id)
 ***Request (params) : (required) id => id_post***
 
 ***Request (header): (required) Authorization: Bearer <JWT_TOKEN>***
@@ -413,7 +413,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
     }
 
 ## COMMENT
-### Give a comment (POST        /comment/:id)
+### Give a comment (POST /:id)
 ***Request (params) : (required) id => id_post***
 
 ***Request (header): (required) Authorization: Bearer <JWT_TOKEN>***
@@ -452,7 +452,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Get all comment on specific post (GET        /comment/:id)
+### Get all comment on specific post (GET /:id)
 ***Request (Params) : (required) id => id_post***
 
 ***Response: JSON***
@@ -482,7 +482,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Delete comment (DELETE         /comment)
+### Delete comment (DELETE /)
 ***Request (query) : (required) id_comment, id_post***
 
 ***Request (header): (required) Authorization: Bearer <JWT_TOKEN>***
@@ -507,7 +507,7 @@ Hal Pertama yang disiapkan sebelum kolaborasi Frontend-Backend
         “message” : “internal server error”
     }
 
-### Update comment (PUT        /comment)
+### Update comment (PUT /)
 ***Request (query) : (required) id_comment, id_post***
 
 ***Request (header): (required) Authorization: Bearer <JWT_TOKEN>***
